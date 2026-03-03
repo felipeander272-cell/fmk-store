@@ -309,7 +309,7 @@ footer{text-align:center;padding:36px 24px;border-top:1px solid var(--border);co
     <div class="as" id="tse">
       <h2 class="st" style="font-family:'Cormorant Garamond',serif">Configurações</h2><div class="sl"></div>
       <div class="fg"><label>Nome da Loja</label><input type="text" id="cfn"></div>
-      <div class="fg"><label>WhatsApp para pedidos (ex: 5511999999999)</label><input type="tel" id="cfw"></div>
+      <div class="fg"><label>WhatsApp para pedidos (ex: 5585998699549)</label><input type="tel" id="cfw"></div>
       <div class="fg"><label>Cupons (CODIGO:porcentagem, um por linha)</label><textarea id="cfcp" style="min-height:90px"></textarea></div>
       <div class="fg"><label>Nova Senha Admin</label><input type="password" id="cfpw" placeholder="Em branco = não altera"></div>
       <button class="bp" onclick="saveCfg()">💾 Salvar</button>
@@ -378,7 +378,7 @@ const DP=[
   {id:'4',name:'Kit Presente Luxo',category:'Kits Presentes',price:299.90,desc:'Kit completo com perfume + hidratante + sabonete artesanal.',stock:5,image:'',badge:'new',status:'available',reviews:[]},
 ];
 const DC=['Perfumes Femininos','Perfumes Masculinos','Cremes & Hidratantes','Maquiagem','Kits Presentes','Outros'];
-const DCFG={whatsapp:'5511999999999',storeName:'FMK Store',password:'admin123',coupons:'BEMVINDO:10\nVIP:20'};
+const DCFG={whatsapp:'5585998699549',storeName:'FMK Store',password:'admin123',coupons:'BEMVINDO:10\nVIP:20'};
 function ld(k,d){try{const x=localStorage.getItem(k);return x?JSON.parse(x):d;}catch{return d;}}
 function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch{}}
 let prods=ld('fmk_p',DP),cats=ld('fmk_c',DC),cfg=ld('fmk_cfg',DCFG),cart=[],favs=ld('fmk_f',[]),curCat='Todos',curR=5,curRevId=null,disc=0,dCode='',curPic='';
@@ -473,7 +473,7 @@ function confOrder(){
   const s=sub(),t=s*(1-disc/100);
   const its=cart.map(i=>{const p=prods.find(x=>x.id===i.id);return p?`• ${p.name} x${i.qty} = ${fP(p.price*i.qty)}`:''}).filter(Boolean).join('\n');
   const msg=`🛍️ *NOVO PEDIDO — ${cfg.storeName||'FMK Store'}*\n\n👤 *Cliente:* ${nm}\n📱 *Telefone:* ${ph}\n📍 *Endereço:* ${ad}\n💳 *Pagamento:* ${py.value}\n\n🛒 *Itens:*\n${its}${disc>0?`\n\n🎁 *Cupom ${dCode}:* -${disc}%`:''}\n\n💰 *Total:* ${fP(t)}${ob?`\n\n📝 *Obs:* ${ob}`:''}`;
-  window.open(`https://wa.me/${cfg.whatsapp||'5511999999999'}?text=${encodeURIComponent(msg)}`,'_blank');
+  window.open(`https://wa.me/${cfg.whatsapp||'5585998699549'}?text=${encodeURIComponent(msg)}`,'_blank');
   document.getElementById('cob').innerHTML=`<div class="sc2"><div style="font-size:3.5rem;margin-bottom:14px">✅</div><div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;margin-bottom:12px">Pedido Enviado!</div><p style="color:var(--t2);font-size:.86rem;line-height:1.7">Pedido enviado via WhatsApp.<br>Entraremos em contato para confirmar a entrega. 🚚</p><button class="bp" style="margin-top:22px" onclick="closeOv('co');resetO()">Fechar</button></div>`;
 }
 function resetO(){cart=[];disc=0;dCode='';document.getElementById('cup').value='';uBdg();}
